@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import {Aluno} from './js/aluno.js' 
+        import {Turma} from './js/turma.js'
+        import {lista_geral,cadastrarTurma,armazenarValores} from './js/backend.js'
+        
+        cadastrarTurma("12345","turma")
+
+        let aluno1 = new Aluno("12345","ana")
+        let aluno2 = new Aluno("123456","claudio")
+        let aluno3 = new Aluno("12344455","jose")
+        console.log(aluno1)
+        let turma = cadastrarTurma(123,"turma1")
+        let turma2 = cadastrarTurma(123345,"turma1")
+
+        lista_geral[0].cadastrarAluno(aluno1)
+        lista_geral[0].cadastrarAluno(aluno2)
+
+        console.log(lista_geral)
+
+        for (let turma of lista_geral){
+            let a = document.createElement("a")
+            a.innerHTML = turma.nomeTurma + "<br>"
+            a.href = `pagTurma.html?codigoTurma=${turma.codigoTurma}`
+            document.body.append(a)
+        }
+    </script>
+
+</body>
+</html>

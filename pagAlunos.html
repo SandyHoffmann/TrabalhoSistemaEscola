@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="matricula"></p>
+    <p class="nome"></p>
+<script>
+    window.addEventListener("load", () => {
+        let query = new URLSearchParams(location.search)
+        let matricula = query.get("matricula")
+        let turma = JSON.parse(localStorage.getItem("listaTurmas"))
+
+        for (let x of turma){
+            console.log(x.codigoTurma)
+            for (let aluno of x.alunos){
+                if (aluno.matricula == matricula){
+                    console.log(aluno.matricula)
+                    document.querySelector(".matricula").textContent = aluno.matricula
+                    document.querySelector(".nome").textContent = aluno.nome
+                }
+            }}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="id"></p>
+    <p class="nome"></p>
+   <script>
+    window.addEventListener("load", () => {
+        let query = new URLSearchParams(location.search)
+        let idTurma = query.get("codigoTurma")
+        let turma = JSON.parse(localStorage.getItem("listaTurmas"))
+        console.log(turma)
+        for (let x of turma){
+            console.log(x.codigoTurma)
+            if (x.codigoTurma == idTurma){
+                console.log(x.codigoTurma)
+                document.querySelector(".id").textContent = x.codigoTurma
+                document.querySelector(".nome").textContent = x.nomeTurma
+                console.log(x.alunos)
+                for (let i = 0; i<x.alunos.length;i++){
+                    let a = document.createElement("a")
+                    a.href = `pagAlunos.html?matricula=${x.alunos[i].matricula}`
+                    a.innerHTML = x.alunos[i].nome + "<br>"
+                    document.body.append(a)
+                }
+            }
+        }
+    })
+    
+   </script>
+</body>
+</html>
