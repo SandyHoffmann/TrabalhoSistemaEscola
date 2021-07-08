@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <input type="text" class="codturma">
+    <input type="text" class="nometurma">
+
+    <button>Clique</button>
     <script type="module">
         import {Aluno} from './js/aluno.js' 
         import {Turma} from './js/turma.js'
@@ -31,6 +35,20 @@
             a.href = `pagTurma.html?codigoTurma=${turma.codigoTurma}`
             document.body.append(a)
         }
+
+        let botao = document.querySelector("button")
+
+        botao.addEventListener("click", (event) => {
+            let input1 = document.querySelector(".codturma")
+            let input2 = document.querySelector(".nometurma")
+            console.log(input1.value)
+            cadastrarTurma(input1.value,input2.value)
+        })
+        
+        if (!localStorage.getItem("listaTurmas")) {            
+            armazenarValores()
+        } 
+
     </script>
 
 </body>
