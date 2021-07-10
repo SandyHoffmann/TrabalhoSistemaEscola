@@ -9,6 +9,7 @@
     <p class="matricula"></p>
     <p class="nome"></p>
 <script>
+    import { Turma } from './turma.js'
     window.addEventListener("load", () => {
         let query = new URLSearchParams(location.search)
         let matricula = query.get("matricula")
