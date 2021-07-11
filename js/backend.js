@@ -1,3 +1,4 @@
+import { Aluno } from './aluno.js'
 import { Turma } from './turma.js'
 
 function cadastrarTurma(codigo, nome) {
@@ -31,4 +32,27 @@ function verificar() {
     }
 }
 
-export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar }
+let classesInitTurma = []
+let classesInitAlunos = []
+function criarInst() {
+    let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
+    classesInitAlunos = []
+    classesInitTurma = []
+    for (let x = 0; x < lista_geral.length; x++) {
+        let classe = new Turma(lista_geral[x].codigoTurma, lista_geral[x].nomeTurma)
+        classe.alunos = lista_geral[x].alunos
+        classesInitTurma.push(classe)
+        classesInitAlunos.push([])
+        for (let aluno of lista_geral[x].alunos) {
+            let alunoNovo = new Aluno(aluno.matricula, aluno.nome)
+            classesInitAlunos[x].push(alunoNovo)
+        }
+    }
+    console.log(classesInitTurma)
+    console.log(classesInitAlunos)
+
+}
+
+
+
+export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, criarInst, classesInitTurma, classesInitAlunos }

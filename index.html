@@ -15,12 +15,10 @@
     <script type="module">
         import { Aluno } from './js/aluno.js'
         import { Turma } from './js/turma.js'
-        import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar } from './js/backend.js'
+        import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, criarInst, classesInitTurma, classesInitAlunos } from './js/backend.js'
 
-        let timer = setTimeout(verificar, 1)
-        let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
-
-        cadastrarTurma("12345", "turma")
+        let timer = setTimeout(verificar, 1000)
+        let timer2 = setTimeout(criarInst, 1000)
 
         let aluno1 = new Aluno("12345", "ana")
         let aluno2 = new Aluno("123456", "claudio")
@@ -31,6 +29,7 @@
 
         console.log(turma)
 
+        let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
 
         for (let turma of lista_geral) {
             let a = document.createElement("a")
