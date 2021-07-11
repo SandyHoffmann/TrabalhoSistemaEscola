@@ -11,12 +11,14 @@
     <p class="id"></p>
     <p class="nome"></p>
     <input type="text" class="matricula">
-    <input type="text" class="nome">
+    <input type="text" class="nomeinput">
     <button>Clique</button>
 
     <script type="module">
         import { Aluno } from './js/aluno.js'
         import { Turma } from './js/turma.js'
+        import { criarInst, classesInitTurma, classesInitAlunos, armazenarValores } from './js/backend.js'
+        let timer2 = setTimeout(criarInst, 1)
 
         window.addEventListener("load", () => {
             let query = new URLSearchParams(location.search)
@@ -26,15 +28,19 @@
             for (let x of turma) {
                 console.log(x.codigoTurma)
                 if (x.codigoTurma == idTurma) {
-                    console.log(x.codigoTurma)
                     document.querySelector(".id").textContent = x.codigoTurma
                     document.querySelector(".nome").textContent = x.nomeTurma
-                    console.log(x.alunos)
                     for (let i = 0; i < x.alunos.length; i++) {
                         let a = document.createElement("a")
+                        let deletar = document.createElement("a")
+                        deletar.id = x.alunos[i].matricula
+                        deletar.classList.add("deletar")
                         a.href = `pagAlunos.html?matricula=${x.alunos[i].matricula}`
-                        a.innerHTML = x.alunos[i].nome + "<br>"
+                        a.innerHTML = "<br>" + x.alunos[i].nome
+                        deletar.innerHTML = "---" + "Deletar" + "<br>"
+                        deletar.addEventListener("click", function () { deletando(x.alunos[i].matricula) })
                         document.body.append(a)
+                        document.body.append(deletar)
                     }
                 }
             }
@@ -43,21 +49,43 @@
         botao.addEventListener("click", (event) => {
             let query = new URLSearchParams(location.search)
             let idTurma = query.get("codigoTurma")
-            let turma = JSON.parse(localStorage.getItem("listaTurmas"))
-            for (let x of turma) {
-                console.log(x.codigoTurma)
+            let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
+            console.log(classesInitTurma)
+            for (let x of classesInitTurma) {
+                console.log(x)
                 if (x.codigoTurma == idTurma) {
-                    let input1 = document.querySelector(".matricula")
-                    let input2 = document.querySelector(".nome")
+                    let input1 = document.querySelector(".matricula").value
+                    let input2 = document.querySelector(".nomeinput").value
+                    console.log(input1)
                     let aluno = new Aluno(input1, input2)
-                    let turma = ""
-                    console.log(typeof x.dizOi)
-                    console.log(typeof aluno.dizOi)
+                    console.log(aluno)
+                    x.cadastrarAluno(aluno)
+                    console.log(classesInitTurma)
+                    armazenarValores(classesInitTurma)
+                    return "ok"
                 }
             }
             console.log(turma)
         })
-
+        function deletando(deletar) {
+            console.log(deletar)
+            let query = new URLSearchParams(location.search)
+            let idTurma = query.get("codigoTurma")
+            let tag = document.getElementById(deletar);
+            for (let x of classesInitTurma) {
+                if (x.codigoTurma == idTurma) {
+                    let matricula = tag.id
+                    console.log(deletar)
+                    for (let i = 0; i < x.alunos.length; i++) {
+                        if (x.alunos[i].matricula == deletar) {
+                            alert("a")
+                            x.removerAluno(matricula)
+                            armazenarValores(classesInitTurma)
+                        }
+                    }
+                }
+            }
+        }
     </script>
 
 </body>
