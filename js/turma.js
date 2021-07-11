@@ -1,4 +1,4 @@
-import { armazenarValores } from './backend.js'
+import { armazenarValores, criarInst } from './backend.js'
 
 
 export class Turma {
@@ -7,10 +7,6 @@ export class Turma {
         this.nomeTurma = nomeTurma
         this.alunos = []
     }
-
-    dizOi(par) {
-        console.log(par)
-    }
     cadastrarAluno(aluno) {
         for (let estudante of this.alunos) {
             if (estudante.matricula == aluno.matricula) {
@@ -18,7 +14,6 @@ export class Turma {
             }
         }
         this.alunos.push(aluno)
-        armazenarValores()
         return ("Deu certo!")
     }
     removerAluno(matriculaAluno) {
