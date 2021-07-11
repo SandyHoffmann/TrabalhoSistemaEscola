@@ -17,6 +17,7 @@ function cadastrarTurma(codigo, nome) {
 
 function armazenarValores(lista) {
     localStorage.setItem("listaTurmas", JSON.stringify(lista))
+    window.location.reload()
 }
 
 function armazenarValorInicial() {

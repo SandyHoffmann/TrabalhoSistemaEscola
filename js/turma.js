@@ -15,7 +15,6 @@ export class Turma {
         }
         this.alunos.push(aluno)
         return ("Deu certo!")
-        criarInst()
     }
     removerAluno(matriculaAluno) {
         for (let x = 0; x < (this.alunos.length); x += 1) {

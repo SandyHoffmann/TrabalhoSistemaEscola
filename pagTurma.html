@@ -30,12 +30,17 @@
                 if (x.codigoTurma == idTurma) {
                     document.querySelector(".id").textContent = x.codigoTurma
                     document.querySelector(".nome").textContent = x.nomeTurma
-                    console.log(x.alunos)
                     for (let i = 0; i < x.alunos.length; i++) {
                         let a = document.createElement("a")
+                        let deletar = document.createElement("a")
+                        deletar.id = x.alunos[i].matricula
+                        deletar.classList.add("deletar")
                         a.href = `pagAlunos.html?matricula=${x.alunos[i].matricula}`
-                        a.innerHTML = x.alunos[i].nome + "<br>"
+                        a.innerHTML = "<br>" + x.alunos[i].nome
+                        deletar.innerHTML = "---" + "Deletar" + "<br>"
+                        deletar.addEventListener("click", function () { deletando(x.alunos[i].matricula) })
                         document.body.append(a)
+                        document.body.append(deletar)
                     }
                 }
             }
@@ -57,14 +62,30 @@
                     x.cadastrarAluno(aluno)
                     console.log(classesInitTurma)
                     armazenarValores(classesInitTurma)
-                    // armazenarValores(classesInitTurma)
-                    // criarInst()
                     return "ok"
                 }
             }
             console.log(turma)
         })
-
+        function deletando(deletar) {
+            console.log(deletar)
+            let query = new URLSearchParams(location.search)
+            let idTurma = query.get("codigoTurma")
+            let tag = document.getElementById(deletar);
+            for (let x of classesInitTurma) {
+                if (x.codigoTurma == idTurma) {
+                    let matricula = tag.id
+                    console.log(deletar)
+                    for (let i = 0; i < x.alunos.length; i++) {
+                        if (x.alunos[i].matricula == deletar) {
+                            alert("a")
+                            x.removerAluno(matricula)
+                            armazenarValores(classesInitTurma)
+                        }
+                    }
+                }
+            }
+        }
     </script>
 
 </body>
