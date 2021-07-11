@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Aluno {
+        constructor(matricula, nome, telefone, email, notas, media) {
+          this.#matricula = matricula;
+          this.nome = nome;
+          this.telefone = telefone;
+          this.email = email;
+          this.#notas = notas;
+          this.#media = media;
+        }
+        editarInformacoes(nome, telefone, email) {
+          if (!nome == this.nome) {
+            this.nome = nome;
+          }
+          if (!telefone == this.telefone) {
+            this.telefone = telefone;
+          }
+          if (!email == this.email) {
+            this.email = email;
+          }
+        }
+        calculaMedia() {
+          let soma = 0;
+          for (let x = 0; x < this.notas.length; x++) {
+            soma += this.notas[x];
+          }
+          let media = soma / this.notas.length;
+          return media;
+        }
+      }
+    </script>
+  </body>
+</html>
