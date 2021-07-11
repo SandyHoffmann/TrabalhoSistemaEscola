@@ -8,8 +8,19 @@
 <body>
     <p class="matricula"></p>
     <p class="nome"></p>
-<script>
-    import { Turma } from './turma.js'
+    <input type="text" class="matricula2">
+    <input type="text" class="nomeinput">
+    <button>Clique</button>
+    
+<script type="module">
+
+    import { Turma } from './js/turma.js'
+    import { criarInst, classesInitTurma, classesInitAlunos, armazenarValores } from './js/backend.js'
+    let timer = setTimeout(criarInst, 1)
+
+
+    let input1 = document.querySelector(".matricula2")
+    let input2 = document.querySelector(".nomeinput")
     window.addEventListener("load", () => {
         let query = new URLSearchParams(location.search)
         let matricula = query.get("matricula")
@@ -22,9 +33,31 @@
                     console.log(aluno.matricula)
                     document.querySelector(".matricula").textContent = aluno.matricula
                     document.querySelector(".nome").textContent = aluno.nome
+                    input1.value = aluno.matricula
+                    input2.value = aluno.nome
                 }
             }}
-    })
+        })
+    
+    let botao = document.querySelector("button")
+
+    botao.addEventListener("click", (event) => {
+        let par = document.querySelector(".matricula").textContent
+        let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
+        for (let x of classesInitTurma) {
+            for (let i = 0; i < x.alunos.length; i++) {
+                if (x.alunos[i].matricula == par) {
+                    x.alunos[i].nome = input2.value
+                    armazenarValores(classesInitTurma)
+                }
+            }
+        }
+        }
+    )
+
+    
+
+
 </script>
 </body>
 </html>
