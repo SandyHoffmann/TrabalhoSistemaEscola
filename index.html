@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <input type="text" class="codturma">
     <input type="text" class="nometurma">
 
     <button>Clique</button>
     <script type="module">
-        import { Aluno } from './js/aluno.js'
-        import { Turma } from './js/turma.js'
-        import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, criarInst, classesInitTurma, classesInitAlunos } from './js/backend.js'
+        import {Aluno} from './js/aluno.js' 
+        import {Turma} from './js/turma.js'
+        import {lista_geral,cadastrarTurma,armazenarValores} from './js/backend.js'
+        
+        cadastrarTurma("12345","turma")
 
-        let timer = setTimeout(verificar, 1000)
-        let timer2 = setTimeout(criarInst, 1000)
+        let aluno1 = new Aluno("12345","ana")
+        let aluno2 = new Aluno("123456","claudio")
+        let aluno3 = new Aluno("12344455","jose")
+        console.log(aluno1)
+        let turma = cadastrarTurma(123,"turma1")
+        let turma2 = cadastrarTurma(123345,"turma1")
 
-        let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
+        lista_geral[0].cadastrarAluno(aluno1)
+        lista_geral[0].cadastrarAluno(aluno2)
 
-        for (let turma of lista_geral) {
+        console.log(lista_geral)
+
+        for (let turma of lista_geral){
             let a = document.createElement("a")
             a.innerHTML = turma.nomeTurma + "<br>"
             a.href = `pagTurma.html?codigoTurma=${turma.codigoTurma}`
@@ -35,14 +42,14 @@
             let input1 = document.querySelector(".codturma")
             let input2 = document.querySelector(".nometurma")
             console.log(input1.value)
-            cadastrarTurma(input1.value, input2.value)
-            window.location.reload()
-
+            cadastrarTurma(input1.value,input2.value)
         })
-
+        
+        if (!localStorage.getItem("listaTurmas")) {            
+            armazenarValores()
+        } 
 
     </script>
 
 </body>
-
 </html>

@@ -1,0 +1,73 @@
+#botaoenviar{
+    background-color: #F2C9E0 !important;
+    color: BLACK;
+}
+#botao{
+    background-color: #F2C9E0;
+    color: BLACK;
+}
+#botaoAluno{
+    background-color: #F2C9E0;
+    color: BLACK;
+}
+#centralizarBotao{
+    display: flex;
+    justify-content: center;
+}
+#centralizarBotaoTurmas{
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+#fileira{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card{
+    flex: 1 0 33%;
+}
+.mais{
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 5%;
+    height: 10vh;
+    margin-bottom: 5%;
+}
+#botaomais{
+    background-color:  #F2C9E0 !important;
+    color: white;
+    border-radius: 50%;
+    width: 10vh;
+
+}
+.maisAluno{
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 5%;
+    height: 10vh;
+    margin-bottom: 5%;
+}
+#botaomaisAluno{
+    background-color:  #F2C9E0 !important;
+    color: white;
+    border-radius: 50%;
+    width: 10vh;
+
+}
+.titulo-cadastro{
+    color: #FFB5A7;
+    text-align: center;
+}
+.form-group{
+    padding: 10px;
+}
+head{
+    font-family: 'Quicksand', sans-serif;
+}
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+footer{
+    font-family: 'Quicksand', sans-serif;
+}

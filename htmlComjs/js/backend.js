@@ -36,7 +36,7 @@ function verificar() {
 }
 
 let classesInitTurma = []
-
+let classesInitAlunos = []
 function criarInst() {
     let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
     classesInitAlunos = []

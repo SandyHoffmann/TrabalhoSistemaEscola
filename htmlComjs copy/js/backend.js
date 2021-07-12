@@ -35,27 +35,22 @@ function verificar() {
     }
 }
 
-let classesInitTurma = []
-
-function criarInst() {
-    let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
-    classesInitAlunos = []
-    classesInitTurma = []
-    for (let x = 0; x < lista_geral.length; x++) {
-        let classe = new Turma(lista_geral[x].codigoTurma, lista_geral[x].nomeTurma)
-        classe.alunos = lista_geral[x].alunos
-        classesInitTurma.push(classe)
-        classesInitAlunos.push([])
-        for (let aluno of lista_geral[x].alunos) {
-            let alunoNovo = new Aluno(aluno.matricula, aluno.nome, aluno.telefone, aluno.email,aluno.notas,aluno.media)
-            classesInitAlunos[x].push(alunoNovo)
-        }
+function instanciaTurmas(turmas) {
+    let turmasObjeto = []
+    for (let turma of turmas) {
+        let turmaObjeto = new Turma(turma.codigoTurma, turma.nomeTurma, turma.alunos)        
+        turmasObjeto.push(turmaObjeto)
     }
-    console.log(classesInitTurma)
-    console.log(classesInitAlunos)
-
+    return turmasObjeto
 }
 
 
+function instanciaAlunos(turmas) {        
+    for (let turma of turmas) {
+      for (let i = 0; i < turma.alunos.length; i++) {            
+        turma.alunos[i] = new Aluno(turma.alunos[i].matricula, turma.alunos[i].nome, turma.alunos[i].telefone, turma.alunos[i].email)
+      }
+    }
+}
 
-export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, criarInst, classesInitTurma, classesInitAlunos }
+export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, instanciaAlunos, instanciaTurmas, classesInitTurma, classesInitAlunos }
