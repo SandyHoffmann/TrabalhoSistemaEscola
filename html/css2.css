@@ -18,7 +18,7 @@ nav {
 }
 
 .site-footer {
-  background-color: #ffb5a7;
+  background-color: #291D36;
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
@@ -42,7 +42,7 @@ nav {
   color: #737373;
 }
 .site-footer a:hover {
-  color: #ffb5a7;
+  color: #291D36;
   text-decoration: none;
 }
 .footer-links {
@@ -128,7 +128,7 @@ nav {
 .social-icons a:focus,
 .social-icons a:hover {
   color: #fff;
-  background-color: #29aafe;
+  background-color: #291D36;
 }
 .social-icons.size-sm a {
   line-height: 34px;
@@ -146,7 +146,7 @@ nav {
   background-color: #fcd5ce;
 }
 .social-icons a.dribbble:hover {
-  background-color: #f8edeb;
+  background-color: #291D36;
 }
 @media (max-width: 767px) {
   .social-icons li.title {
