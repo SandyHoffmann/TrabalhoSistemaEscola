@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap");
+
 body {
   background-color: #f8edeb;
+  font-family: "PT Serif", serif;
 }
 
 nav {
@@ -39,7 +42,7 @@ nav {
   color: #737373;
 }
 .site-footer a:hover {
-  color: #FFB5A7;
+  color: #ffb5a7;
   text-decoration: none;
 }
 .footer-links {
@@ -55,7 +58,7 @@ nav {
 .footer-links a:active,
 .footer-links a:focus,
 .footer-links a:hover {
-  color: #FFB5A7;
+  color: #ffb5a7;
   text-decoration: none;
 }
 .footer-links.inline li {
@@ -151,4 +154,46 @@ nav {
     margin-right: 0;
     font-weight: 600;
   }
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 4%;
+  margin-top: 2%;
+}
+
+td,
+th {
+  border: 1px solid #FEC89A;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #F9DCC4;
+}
+
+table,
+th,
+td {
+  border: 1px solid #a44a3f;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+
+  position: center;
+}
+
+head {
+  font-family: "Quicksand", sans-serif;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+}
+footer {
+  font-family: "Quicksand", sans-serif;
 }
