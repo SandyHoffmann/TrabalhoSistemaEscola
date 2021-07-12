@@ -1,0 +1,42 @@
+#botao{
+    background-color: #FFC2C7 !important;
+    color: white;
+}
+#fileira{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card{
+    flex: 1 0 33%;
+}
+.mais{
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 5%;
+    height: 10vh;
+    margin-bottom: 5%;
+}
+#botaomais{
+    background-color:  #FFC2C7 !important;
+    color: white;
+    border-radius: 50%;
+    width: 10vh;
+
+}
+.titulo-cadastro{
+    color: #FFB5A7;
+    text-align: center;
+}
+.form-group{
+    padding: 20px;
+}
+head{
+    font-family: 'Quicksand', sans-serif;
+}
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+footer{
+    font-family: 'Quicksand', sans-serif;
+}
