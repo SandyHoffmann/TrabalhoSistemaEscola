@@ -13,6 +13,7 @@
       href="https://img.icons8.com/ios/250/000000/classroom.png"
     />
     <link rel="stylesheet" href="css.css" />
+    <link rel="stylesheet" href="cssmodal.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="cssindex.css" />
@@ -144,11 +145,47 @@
                   <label for="nomeTurma">Digite o nome da turma</label>
                   <input type="password" class="form-control" id="nomeTurma" placeholder="Nome da turma">
                 </div>
-                <div id="botao">
-                  <button type="submit" class="btn btn">Submit</button>
+                <div id="centralizarBotaoTurmas">
+                  <button type="submit" class="btn btn" id="botaoenviar">Submit</button>
                 </div>
                 
               </form>
+            </div>
+          </div>
+        </div>
+        <div class="maisAluno">
+          <button type="button" class="btn btn" id="botaomaisAluno" data-toggle="modal" data-target=".bd-example-modal-lg-m">+</button>
+        </div>
+        <div class="modal fade bd-example-modal-lg-m" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="titulo-cadastro">
+                <h1>Cadastrar novos alunos</h1>
+              </div>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputMatricula4">Matrícula</label>
+                    <input type="matricula" class="form-control" id="inputMatricula4" placeholder="Digite a matrícula do aluno">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputTelefone4">Telefone</label>
+                    <input type="telefone" class="form-control" id="inputTelefone4" placeholder="Digite o número do telefone do aluno">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputNome">Nome</label>
+                  <input type="nome" class="form-control" id="inputNome" placeholder="Digite o nome do aluno">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail">E-mail</label>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Digite o e-mail do aluno">
+                </div>
+                <div class="form-group" id="centralizarBotao">
+                <button type="submit" class="btn btn" id="botaoAluno">Enviar</button>
+                </div>
+              </form>
+
             </div>
           </div>
         </div>
