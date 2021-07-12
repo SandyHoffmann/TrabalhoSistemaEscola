@@ -26,9 +26,10 @@
         let matricula = query.get("matricula")
         let turma = JSON.parse(localStorage.getItem("listaTurmas"))
 
-        for (let x of turma){
-            console.log(x.codigoTurma)
+        for (let x of classesInitTurma){
+            console.log(x)
             for (let aluno of x.alunos){
+                console.log(x.alunos.matricula())
                 if (aluno.matricula == matricula){
                     console.log(aluno.matricula)
                     document.querySelector(".matricula").textContent = aluno.matricula

@@ -18,33 +18,38 @@
         import { Aluno } from './js/aluno.js'
         import { Turma } from './js/turma.js'
         import { criarInst, classesInitTurma, classesInitAlunos, armazenarValores } from './js/backend.js'
-        let timer2 = setTimeout(criarInst, 1)
-
-        window.addEventListener("load", () => {
+        let timer1 = setTimeout(criarInst,1)
+        let timer2 = setTimeout(iniciar, 2)
+        console.log(classesInitTurma)
+        function iniciar() {
             let query = new URLSearchParams(location.search)
             let idTurma = query.get("codigoTurma")
             let turma = JSON.parse(localStorage.getItem("listaTurmas"))
-            console.log(turma)
-            for (let x of turma) {
-                console.log(x.codigoTurma)
+            console.log(classesInitTurma[0])
+            let cont = -1
+            for (let x of classesInitTurma) {
+                cont+=1
                 if (x.codigoTurma == idTurma) {
                     document.querySelector(".id").textContent = x.codigoTurma
                     document.querySelector(".nome").textContent = x.nomeTurma
-                    for (let i = 0; i < x.alunos.length; i++) {
-                        let a = document.createElement("a")
-                        let deletar = document.createElement("a")
-                        deletar.id = x.alunos[i].matricula
+                    let a = document.createElement("a")
+                    let deletar = document.createElement("a")
+                    for (let y = 0; y < classesInitAlunos.length; y++){
+                        console.log(classesInitAlunos[cont][y])
+                        deletar.id = classesInitAlunos[cont][y].matricula
                         deletar.classList.add("deletar")
-                        a.href = `pagAlunos.html?matricula=${x.alunos[i].matricula}`
-                        a.innerHTML = "<br>" + x.alunos[i].nome
+                        console.log(classesInitAlunos[x])
+                        a.href = `pagAlunos.html?matricula=${classesInitAlunos[cont][y].matricula}`
+                        a.innerHTML = "<br>" + classesInitAlunos[cont][y].nome
                         deletar.innerHTML = "---" + "Deletar" + "<br>"
-                        deletar.addEventListener("click", function () { deletando(x.alunos[i].matricula) })
+                        deletar.addEventListener("click", function () { deletando(classesInitAlunos[cont][y].matricula) })
                         document.body.append(a)
                         document.body.append(deletar)
+                        
                     }
                 }
             }
-        })
+        }
         let botao = document.querySelector("button")
         botao.addEventListener("click", (event) => {
             let query = new URLSearchParams(location.search)
@@ -57,7 +62,7 @@
                     let input1 = document.querySelector(".matricula").value
                     let input2 = document.querySelector(".nomeinput").value
                     console.log(input1)
-                    let aluno = new Aluno(input1, input2)
+                    let aluno = new Aluno(input1, input2,"123","1222","123333","131313")
                     console.log(aluno)
                     x.cadastrarAluno(aluno)
                     console.log(classesInitTurma)
