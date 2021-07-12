@@ -3,11 +3,11 @@ body {
   }
   
   nav {
-    background-color: #F4CBC4 !important;
+    background-color: #F28DBC !important;
   }
   
   #Home li {
-    background-color: #F4CBC4 !important ;
+    background-color: #F28DBC !important ;
   }
   
   .dropdown-menu {
@@ -15,7 +15,7 @@ body {
   }
   
   .site-footer {
-    background-color: #F4CBC4;
+    background-color: #F28DBC;
     padding: 45px 0 20px;
     font-size: 15px;
     line-height: 24px;
