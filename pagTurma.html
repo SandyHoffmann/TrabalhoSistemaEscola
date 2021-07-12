@@ -12,6 +12,8 @@
     <p class="nome"></p>
     <input type="text" class="matricula">
     <input type="text" class="nomeinput">
+    <input type="text" class="telefone">
+    <input type="text" class="email">   
     <button>Clique</button>
 
     <script type="module">
@@ -32,20 +34,21 @@
                 if (x.codigoTurma == idTurma) {
                     document.querySelector(".id").textContent = x.codigoTurma
                     document.querySelector(".nome").textContent = x.nomeTurma
-                    let a = document.createElement("a")
-                    let deletar = document.createElement("a")
+                    console.log(classesInitAlunos)
                     for (let y = 0; y < classesInitAlunos.length; y++){
-                        console.log(classesInitAlunos[cont][y])
-                        deletar.id = classesInitAlunos[cont][y].matricula
-                        deletar.classList.add("deletar")
-                        console.log(classesInitAlunos[x])
-                        a.href = `pagAlunos.html?matricula=${classesInitAlunos[cont][y].matricula}`
-                        a.innerHTML = "<br>" + classesInitAlunos[cont][y].nome
-                        deletar.innerHTML = "---" + "Deletar" + "<br>"
-                        deletar.addEventListener("click", function () { deletando(classesInitAlunos[cont][y].matricula) })
-                        document.body.append(a)
-                        document.body.append(deletar)
-                        
+                        for (let z=0;z<classesInitAlunos[y].length;z++){
+                            let a = document.createElement("a")
+                            let deletar = document.createElement("a")
+                            console.log(classesInitAlunos[y][z].matricula)
+                            deletar.id = classesInitAlunos[y][z].matricula
+                            deletar.classList.add("deletar")
+                            a.href = `pagAlunos.html?matricula=${classesInitAlunos[y][z].matricula}`
+                            a.innerHTML = "<br>" + classesInitAlunos[y][z].nome
+                            deletar.innerHTML = "---" + "Deletar" + "<br>"
+                            deletar.addEventListener("click", function () { deletando(classesInitAlunos[y][z].matricula) })
+                            document.body.append(a)
+                            document.body.append(deletar)
+                    }
                     }
                 }
             }
@@ -61,9 +64,12 @@
                 if (x.codigoTurma == idTurma) {
                     let input1 = document.querySelector(".matricula").value
                     let input2 = document.querySelector(".nomeinput").value
-                    console.log(input1)
-                    let aluno = new Aluno(input1, input2,"123","1222","123333","131313")
-                    console.log(aluno)
+                    let input3 = document.querySelector(".telefone").value
+                    let input4 = document.querySelector(".email").value
+
+                    alert(input1)
+                    let aluno = new Aluno(input1,input2,input3,input4)
+                    alert(aluno.matricula)
                     x.cadastrarAluno(aluno)
                     console.log(classesInitTurma)
                     armazenarValores(classesInitTurma)

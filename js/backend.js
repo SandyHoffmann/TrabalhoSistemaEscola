@@ -13,6 +13,8 @@ function cadastrarTurma(codigo, nome) {
     lista_geral.push(turma)
     console.log(lista_geral)
     armazenarValores(lista_geral)
+    window.location.reload()
+
 }
 
 function armazenarValores(lista) {
@@ -45,7 +47,7 @@ function criarInst() {
         classesInitTurma.push(classe)
         classesInitAlunos.push([])
         for (let aluno of lista_geral[x].alunos) {
-            let alunoNovo = new Aluno(aluno.matricula, aluno.nome)
+            let alunoNovo = new Aluno(aluno.matricula, aluno.nome, aluno.telefone, aluno.email,aluno.notas,aluno.media)
             classesInitAlunos[x].push(alunoNovo)
         }
     }

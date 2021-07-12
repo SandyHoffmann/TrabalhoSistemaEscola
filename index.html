@@ -20,15 +20,6 @@
         let timer = setTimeout(verificar, 1000)
         let timer2 = setTimeout(criarInst, 1000)
 
-        let aluno1 = new Aluno("12345", "ana")
-        let aluno2 = new Aluno("123456", "claudio")
-        let aluno3 = new Aluno("12344455", "jose")
-        console.log(aluno1)
-        let turma = cadastrarTurma(123, "turma1")
-        let turma2 = cadastrarTurma(123345, "turma1")
-
-        console.log(turma)
-
         let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
 
         for (let turma of lista_geral) {
@@ -45,6 +36,8 @@
             let input2 = document.querySelector(".nometurma")
             console.log(input1.value)
             cadastrarTurma(input1.value, input2.value)
+            window.location.reload()
+
         })
 
 
