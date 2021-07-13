@@ -2,6 +2,21 @@
     background-color: #e5588b !important;
     color: black;
 }
+
+#botaoCadastro{
+    background-color: #e5588b !important;
+    color: black;
+}
+a{
+    color: #e5588b;
+}
+a:hover{
+    color: #e5588b;
+}
+button:hover{
+    background-color: #cb80fd;
+
+}
 #botao{
     background-color: #e5588b;
     color: BLACK;
@@ -30,14 +45,14 @@
     flex: 1 1 25%;
     margin: 1.5%;
     width: 18rem;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     background-color: whitesmoke;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 10px;
-    -webkit-box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
-    -moz-box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
-    box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
+    -webkit-box-shadow:0px 10px 13px -7px rgba(229,88,139,1);
+    -moz-box-shadow: 0px 10px 13px -7px rgba(229,88,139,1);
+    box-shadow: 0px 10px 13px -7px rgba(229,88,139,1);
 }
 .mais{
     display: flex;
@@ -53,7 +68,31 @@
     width: 10vh;
 
 }
-@media (max-width: 800px) {
+
+#containerbd{
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    flex-grow: 1;
+    /* box-shadow:
+    0 0 60px 10px #fff,  /* inner white 
+    0 0 100px 20px #f0f, middle magenta 
+    0 0 140px 30px #0ff; outer cyan */
+}
+
+
+.header{
+    width: 100%;
+    height: 50vh;
+    background-color: pink;
+    margin-top: 1%;
+}
+
+#botao:hover{
+    background-color: #cb80fd;
+}
+
+@media (max-width: 900px) {
     #fileira{
         display: flex;
         flex-direction: column;
@@ -72,6 +111,10 @@
     #botaomais{
         background-color:  rgb(255, 96, 162) !important;
         color: aliceblue;
+    }
+    #containerbd{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
 }
@@ -113,4 +156,15 @@ body{
 }
 footer{
     font-family: 'Quicksand', sans-serif;
+}
+
+
+.navbar-inverse{
+    margin: 0px;
+}
+
+.titulo{
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
 }
