@@ -1,6 +1,7 @@
 #myCarousel{
-    width: 40%;
+    width: 50%;
     justify-content: center;
+    margin: auto;
 }
 
 #botaoenviar{

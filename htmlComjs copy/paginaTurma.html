@@ -53,24 +53,29 @@
         </div>
       </div>
     </nav>
+    <div class="container" id="containerbd">
    <center> <h1 class="nomeTurma"></h1>
     <h2 class="codigoTurma"></h2></center>
-<section class="container">
-    <table class="tabela" id="tabela">
-      <tr>
-        <th scope="col">Matrícula</th>
-        <th scope="col">Nome</th>
-        <th scope="col" class = "esconder">Nota 1</th>
-        <th scope="col" class = "esconder">Nota 2</th>
-        <th scope="col" class = "esconder">Nota 3</th>
-        <th scope="col" class = "esconder">Média Final</th>
-        <th scope="col">Deletar</th>
-      </tr>
-    </table>
-  </section>
+    <div class="corpoPag">
+  <section class="container">
+      <table class="tabela" id="tabela">
+        <tr>
+          <th scope="col">Matrícula</th>
+          <th scope="col">Nome</th>
+          <th scope="col" class = "esconder">Nota 1</th>
+          <th scope="col" class = "esconder">Nota 2</th>
+          <th scope="col" class = "esconder">Nota 3</th>
+          <th scope="col" class = "esconder">Média Final</th>
+          <th scope="col">Deletar</th>
+        </tr>
+      </table>
+    </section>
+  <br>
+    </div>
     <div class="maisAluno">
       <button type="button" class="btn btn" id="botaomaisAluno" data-toggle="modal" data-target=".bd-example-modal-lg-m">+</button>
     </div>
+  </div>
     <div class="modal fade bd-example-modal-lg-m" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -81,23 +86,23 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputMatricula4">Matrícula</label>
-                <input type="matricula" class="form-control" id="inputMatricula4" placeholder="Digite a matrícula do aluno">
+                <input type="text" class="form-control" id="inputMatricula4" placeholder="Digite a matrícula do aluno" required maxlength="10" minlength="2">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputTelefone4">Telefone</label>
-                <input type="telefone" class="form-control" id="inputTelefone4" placeholder="Digite o número do telefone do aluno">
+                <input type="text" class="form-control" id="inputTelefone4" placeholder="Digite o número do telefone do aluno" required maxlength="20" minlength="2">
               </div>
             </div>
             <div class="form-group">
               <label for="inputNome">Nome</label>
-              <input type="nome" class="form-control" id="inputNome" placeholder="Digite o nome do aluno">
+              <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do aluno" required maxlength="15" minlength="2">
             </div>
             <div class="form-group">
               <label for="inputEmail">E-mail</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o e-mail do aluno">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Digite o e-mail do aluno" required maxlength="20" minlength="2">
             </div>
             <div class="form-group" id="centralizarBotao">
-            <a class="btn btn" id="botaoAluno">Enviar</a>
+            <button type="submit" class="btn btn" id="botaoAluno">Enviar</button>
             </div>
           </form>
 
@@ -211,20 +216,27 @@
           let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
           let turmasInst = instanciaTurmas(turma2)
           let alunosInst = instanciaAlunos(turma2)
-          for (let x of turmasInst) {
-              if (x.codigoTurma == idTurma) {
-                  let input1 = document.querySelector("#inputMatricula4").value
-                  let input2 = document.querySelector("#inputNome").value
-                  let input3 = document.querySelector("#inputTelefone4").value
-                  let input4 = document.querySelector("#inputEmail").value
-                  let aluno = new Aluno(input1,input2,input3,input4)
-                  document.querySelector("#inputMatricula4").value = ''
-                  document.querySelector("#inputNome").value = ''
-                  document.querySelector("#inputTelefone4").value = ''
-                  document.querySelector("#inputEmail").value = ''
-                  x.cadastrarAluno(aluno)
-                  armazenarValores(turmasInst)
-              }
+          let cont1 = document.querySelector("#inputMatricula4").value
+          let cont2 = document.querySelector("#inputNome").value
+          let cont3 = document.querySelector("#inputTelefone4").value
+          let cont4 = document.querySelector("#inputEmail").value
+
+          if (cont1.length>1 && cont2.length>1){
+            for (let x of turmasInst) {
+                if (x.codigoTurma == idTurma) {
+                    let input1 = document.querySelector("#inputMatricula4").value
+                    let input2 = document.querySelector("#inputNome").value
+                    let input3 = document.querySelector("#inputTelefone4").value
+                    let input4 = document.querySelector("#inputEmail").value
+                    let aluno = new Aluno(input1,input2,input3,input4)
+                    document.querySelector("#inputMatricula4").value = ''
+                    document.querySelector("#inputNome").value = ''
+                    document.querySelector("#inputTelefone4").value = ''
+                    document.querySelector("#inputEmail").value = ''
+                    x.cadastrarAluno(aluno)
+                    armazenarValores(turmasInst)
+                }
+            }
           }
       })
       function deletando(deletar) {

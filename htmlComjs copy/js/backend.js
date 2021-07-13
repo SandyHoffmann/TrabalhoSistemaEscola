@@ -6,12 +6,13 @@ function cadastrarTurma(codigo, nome) {
     console.log(lista_geral)
     for (let elemento of lista_geral) {
         if (elemento.codigoTurma == codigo) {
-            return ("Não foi possivel cadastrar a turma!")
+            return alert("Não foi possivel cadastrar a turma, pois o código já existe!")
         }
     }
     let turma = new Turma(codigo, nome)
     lista_geral.push(turma)
     console.log(lista_geral)
+    alert("Turma Cadastrada!")
     armazenarValores(lista_geral)
     window.location.reload()
 
@@ -23,14 +24,14 @@ function armazenarValores(lista) {
 }
 
 function armazenarValorInicial() {
-    alert("a")
     let lista_geral = []
     localStorage.setItem("listaTurmas", JSON.stringify(lista_geral))
+    window.location.reload()
 }
 
 function verificar() {
     if (!localStorage.getItem("listaTurmas")) {
-        alert("a")
+        alert("Iniciando Backend")
         armazenarValorInicial()
     }
 }

@@ -1,6 +1,9 @@
 body {
-  background-color: #f8edeb;
+  background-color: rgb(223, 223, 223);
   background-image: url("https://www.transparenttextures.com/patterns/inflicted.png");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 nav {
   background-color: #3f2353  !important;
@@ -24,12 +27,12 @@ nav {
 .site-footer {
   background-color: #3f2353  !important;
   background-image: url("https://www.transparenttextures.com/patterns/corrugation.png");
-
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
   color: black;
 }
+
 .site-footer hr {
   border-top-color: rgb(223, 223, 223);
   opacity: 0.5;
@@ -39,6 +42,7 @@ nav {
 }
 .site-footer h6 {
   color: #e5588b;
+  font-weight: bolder;
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
@@ -89,11 +93,8 @@ nav {
 .copyright-text {
   margin: 0;
 }
-@media (max-width: 991px) {
-  .site-footer [class^="col-"] {
-    margin-bottom: 30px;
-  }
-}
+
+
 @media (max-width: 767px) {
   .site-footer {
     padding-bottom: 0;
@@ -101,6 +102,12 @@ nav {
   .site-footer .copyright-text,
   .site-footer .social-icons {
     text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  #remoto{
+    height: 100vh;
   }
 }
 .social-icons {
@@ -180,7 +187,6 @@ footer {
 }
 
 
-
 .carteira {
   background-color: #f9dcc4;
   border-radius: 50px;
@@ -242,4 +248,11 @@ footer {
 .nome-estudante {
   grid-column: span 2;
   font-size: 40px;
+}
+
+#remoto{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+
 }
