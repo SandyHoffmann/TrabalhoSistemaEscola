@@ -1,3 +1,8 @@
+#myCarousel{
+    width: 40%;
+    justify-content: center;
+}
+
 #botaoenviar{
     background-color: #e5588b !important;
     color: black;
@@ -5,6 +10,7 @@
 #botao{
     background-color: #e5588b;
     color: BLACK;
+    font-size: 15px;
 }
 #botaoAluno{
     background-color: #e5588b;
@@ -27,7 +33,7 @@
 .card{
     flex: 1 1 25%;
     margin: 1.5%;
-    border: 1px solid black;
+    border: 0.5px solid black;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 10px;
@@ -41,7 +47,13 @@
     border-top-right-radius: 10px;
     border: 20px solid black;
     width: 100%;
-    height: 50px;
+    height: 10px;
+}
+.card-title{
+    font-size:20px;
+}
+.card-text{
+    font-size: 15px;
 }
 .mais{
     display: flex;
