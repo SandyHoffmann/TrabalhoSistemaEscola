@@ -1,13 +1,13 @@
 #botaoenviar{
-    background-color: #F2C9E0 !important;
-    color: BLACK;
+    background-color: #e5588b !important;
+    color: black;
 }
 #botao{
-    background-color: #F2C9E0;
+    background-color: #e5588b;
     color: BLACK;
 }
 #botaoAluno{
-    background-color: #F2C9E0;
+    background-color: #e5588b;
     color: BLACK;
 }
 #centralizarBotao{
@@ -25,7 +25,23 @@
     flex-wrap: wrap;
 }
 .card{
-    flex: 1 0 33%;
+    flex: 1 1 25%;
+    margin: 1.5%;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
+    -moz-box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
+    box-shadow: 0px 0px 81px -6px rgba(229,88,139,1);
+}
+.cabecalho{
+    background-color:black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 20px solid black;
+    width: 100%;
+    height: 50px;
 }
 .mais{
     display: flex;
@@ -35,8 +51,8 @@
     margin-bottom: 5%;
 }
 #botaomais{
-    background-color:  #F2C9E0 !important;
-    color: white;
+    background-color:  black !important;
+    color: #9D9D9D;
     border-radius: 50%;
     width: 10vh;
 
@@ -49,14 +65,14 @@
     margin-bottom: 5%;
 }
 #botaomaisAluno{
-    background-color:  #F2C9E0 !important;
-    color: white;
+    background-color:  black !important;
+    color: #9D9D9D;
     border-radius: 50%;
     width: 10vh;
 
 }
 .titulo-cadastro{
-    color: #FFB5A7;
+    color: #e5588b;
     text-align: center;
 }
 .form-group{
@@ -71,4 +87,3 @@ body{
 footer{
     font-family: 'Quicksand', sans-serif;
 }
-
