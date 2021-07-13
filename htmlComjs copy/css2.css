@@ -1,42 +1,53 @@
-
 body {
   background-color: #f8edeb;
-  font-family: "PT Serif", serif;
+  background-image: url("https://www.transparenttextures.com/patterns/inflicted.png");
 }
-
 nav {
-  background-color: #ffb5a7 !important;
+  background-color: #3f2353  !important;
+  color: #e5588b;
+  background-image: url("https://www.transparenttextures.com/patterns/corrugation.png");
 }
-
+.navbar-brand{
+  color: #e5588b;
+}
 #Home li {
-  background-color: #ffb5a7 !important ;
+  background-color: #3f2353  !important;
 }
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: #3f2353  !important;
+  background-image: url("https://www.transparenttextures.com/patterns/corrugation.png");
 
+}
 .dropdown-menu {
-  color: black;
+  color: #111111;
 }
-
 .site-footer {
-  background-color: #291D36;
+  background-color: #3f2353  !important;
+  background-image: url("https://www.transparenttextures.com/patterns/corrugation.png");
+
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
-  color: #737373;
+  color: black;
 }
 .site-footer hr {
-  border-top-color: #bbb;
+  border-top-color: rgb(223, 223, 223);
   opacity: 0.5;
 }
 .site-footer hr.small {
   margin: 20px 0;
 }
 .site-footer h6 {
-  color: #fff;
+  color: #e5588b;
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
 }
+.text-justify{
+  color: #d6d6d6;
+}
+
 .site-footer a {
   color: #737373;
 }
@@ -47,12 +58,13 @@ nav {
 .footer-links {
   padding-left: 0;
   list-style: none;
+  text-align: center;
 }
 .footer-links li {
   display: block;
 }
 .footer-links a {
-  color: #737373;
+  color: #d6d6d6;
 }
 .footer-links a:active,
 .footer-links a:focus,
@@ -70,10 +82,9 @@ nav {
   width: 40px;
   height: 40px;
   line-height: 40px;
-  margin-left: 6px;
-  margin-right: 0;
+  margin: 0;
   border-radius: 100%;
-  background-color: #33353d;
+  color: #cb80fd;
 }
 .copyright-text {
   margin: 0;
@@ -123,11 +134,14 @@ nav {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
+.copyright-text{
+  color:#d6d6d6;
+}
 .social-icons a:active,
 .social-icons a:focus,
 .social-icons a:hover {
-  color: #fff;
-  background-color: #291D36;
+  color: #e5588b;
+  background-color: #e5588b;
 }
 .social-icons.size-sm a {
   line-height: 34px;
@@ -135,18 +149,7 @@ nav {
   width: 34px;
   font-size: 14px;
 }
-.social-icons a.facebook:hover {
-  background-color: #fec89a;
-}
-.social-icons a.twitter:hover {
-  background-color: #f9dcc4;
-}
-.social-icons a.linkedin:hover {
-  background-color: #fcd5ce;
-}
-.social-icons a.dribbble:hover {
-  background-color: #291D36;
-}
+
 @media (max-width: 767px) {
   .social-icons li.title {
     display: block;
@@ -154,7 +157,18 @@ nav {
     font-weight: 600;
   }
 }
-
+.social-icons a.facebook:hover {
+  background-color: #d6d6d6;
+}
+.social-icons a.twitter:hover {
+  background-color: #d6d6d6;
+}
+.social-icons a.linkedin:hover {
+  background-color: #d6d6d6;
+}
+.social-icons a.dribbble:hover {
+  background-color: #d6d6d6;
+}
 head {
   font-family: "Quicksand", sans-serif;
 }
@@ -201,7 +215,7 @@ footer {
     grid-column-start: 1;
     grid-column-end: 3;
     }
-  #botao{
+  .botao2{
     visibility: hidden;
     display: none;
   }
