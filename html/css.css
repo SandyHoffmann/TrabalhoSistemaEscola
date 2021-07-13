@@ -6,11 +6,11 @@ body {
 }
 
 nav {
-  background-color: #ffb5a7 !important;
+  background-color: #291D36 !important;
 }
 
 #Home li {
-  background-color: #ffb5a7 !important ;
+  background-color: #291D36 !important ;
 }
 
 .dropdown-menu {
@@ -18,7 +18,7 @@ nav {
 }
 
 .site-footer {
-  background-color: #ffb5a7;
+  background-color: #291D36;
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
@@ -58,7 +58,7 @@ nav {
 .footer-links a:active,
 .footer-links a:focus,
 .footer-links a:hover {
-  color: #ffb5a7;
+  color: #291D36;
   text-decoration: none;
 }
 .footer-links.inline li {
