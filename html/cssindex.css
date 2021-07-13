@@ -1,6 +1,6 @@
 #botaoenviar{
-    background-color: #0D0D0D !important;
-    color: #e5588b;
+    background-color: #e5588b !important;
+    color: black;
 }
 #botao{
     background-color: #e5588b;
@@ -51,8 +51,8 @@
     margin-bottom: 5%;
 }
 #botaomais{
-    background-color:  #0D0D0D !important;
-    color: white;
+    background-color:  black !important;
+    color: #9D9D9D;
     border-radius: 50%;
     width: 10vh;
 
@@ -65,14 +65,14 @@
     margin-bottom: 5%;
 }
 #botaomaisAluno{
-    background-color:  #0D0D0D !important;
-    color: white;
+    background-color:  black !important;
+    color: #9D9D9D;
     border-radius: 50%;
     width: 10vh;
 
 }
 .titulo-cadastro{
-    color: #D93B58;
+    color: #e5588b;
     text-align: center;
 }
 .form-group{
