@@ -117,7 +117,7 @@
               <input type="email" class="form-control" id="inputEmail" placeholder="Digite o e-mail do aluno">
             </div>
             <div class="form-group" id="centralizarBotao">
-            <button type="submit" class="btn btn" id="botaoAluno">Enviar</button>
+            <a class="btn btn" id="botaoAluno">Enviar</a>
             </div>
           </form>
 
@@ -183,48 +183,42 @@
     <script type="module">
       import { Aluno } from './js/aluno.js'
       import { Turma } from './js/turma.js'
-      import { criarInst, classesInitTurma, classesInitAlunos, armazenarValores } from './js/backend.js'
-      let timer1 = setTimeout(criarInst,1)
+      import { armazenarValores, instanciaAlunos, instanciaTurmas } from './js/backend.js'
       let timer2 = setTimeout(iniciar, 2)
-      console.log(classesInitTurma)
       function iniciar() {
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
           let turma = JSON.parse(localStorage.getItem("listaTurmas"))
           let pNomeTurma = document.querySelector(".nomeTurma")
           let pCodTurma = document.querySelector(".codigoTurma")
-          console.log(classesInitTurma[0])
-          let cont = -1
-          for (let x of classesInitTurma) {
-              cont+=1
-              if (x.codigoTurma == idTurma) {
-                  pNomeTurma.textContent = x.nomeTurma
-                  pCodTurma.textContent = x.codigoTurma
-                  console.log(classesInitAlunos)
+          let turmasIns = instanciaTurmas(turma)
+          let alunosIns = instanciaAlunos(turma)
+          for (let x = 0; x<turmasIns.length; x++) {
+              if (turmasIns[x].codigoTurma == idTurma) {
+                  pNomeTurma.textContent = turmasIns[x].nomeTurma
+                  pCodTurma.textContent = turmasIns[x].codigoTurma
+                  console.log(turmasIns[x].codigoTurma)
                   let tabela = document.querySelector("table")
-                    for (let z=0;z<classesInitAlunos[cont].length;z++){
+                    for (let z=0;z<turmasIns[x].alunos.length;z++){
                         let fileira = document.createElement("tr")
                         tabela.append(fileira)
                           let a = document.createElement("a")
-                          console.log(classesInitAlunos[cont][z].matricula)
-                          fileira.innerHTML += `<td><a href="pagAlunos.html?matricula=${classesInitAlunos[cont][z].matricula}">${classesInitAlunos[cont][z].nome}</a></td>`
-                          fileira.innerHTML += `<td>${classesInitAlunos[cont][z].matricula}</td>`
-                          if (classesInitAlunos[cont][z].nota){
-                            fileira.innerHTML += `<td>${classesInitAlunos[cont][z].nota[0]}</td>`
-                            fileira.innerHTML += `<td>${classesInitAlunos[cont][z].nota[1]}</td>`
-                            fileira.innerHTML += `<td>${classesInitAlunos[cont][z].nota[2]}</td>`
-                            fileira.innerHTML += `<td>${classesInitAlunos[cont][z].media}</td>`
+                          fileira.innerHTML += `<td><a href="pagCarteirinha.html?matricula=${turmasIns[x].alunos[z].matricula}">${turmasIns[x].alunos[z].matricula}</a></td>`
+                          fileira.innerHTML += `<td>${turmasIns[x].alunos[z].nome}</td>`
+                          if (turmasIns[x].alunos[z].nota[0]){
+                            fileira.innerHTML += `<td>${turmasIns[x].alunos[z].nota[0]}</td>`
+                            fileira.innerHTML += `<td>${turmasIns[x].alunos[z].nota[1]}</td>`
+                            fileira.innerHTML += `<td>${turmasIns[x].alunos[z].nota[2]}</td>`
+                            fileira.innerHTML += `<td>${turmasIns[x].alunos[z].media}</td>`
                           } else{
                             fileira.innerHTML += `<td>Não se tem Notas</td>`
                             fileira.innerHTML += `<td>Não se tem Notas</td>`
                             fileira.innerHTML += `<td>Não se tem Notas</td>`
                             fileira.innerHTML += `<td>Não se tem Notas</td>`
                           }
-                          fileira.innerHTML += `<td><a id = "${classesInitAlunos[cont][z].matricula}" class = "Deletar">deletar</a></td>`
+                          fileira.innerHTML += `<td><a id = "${turmasIns[x].alunos[z].matricula}" class = "Deletar">deletar</a></td>`
                           let deletar = document.querySelectorAll(".Deletar")[z]
-                          console.log(deletar)
                           deletar.addEventListener("click", function () { deletando(deletar.id) })
-                          console.log(fileira)
                   }
                   
               }
@@ -235,40 +229,42 @@
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
           let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
-          for (let x of classesInitTurma) {
+          let turmasInst = instanciaTurmas(turma2)
+          let alunosInst = instanciaAlunos(turma2)
+          for (let x of turmasInst) {
               if (x.codigoTurma == idTurma) {
                   let input1 = document.querySelector("#inputMatricula4").value
                   let input2 = document.querySelector("#inputNome").value
                   let input3 = document.querySelector("#inputTelefone4").value
                   let input4 = document.querySelector("#inputEmail").value
-
-                  
                   let aluno = new Aluno(input1,input2,input3,input4)
+                  document.querySelector("#inputMatricula4").value = ''
+                  document.querySelector("#inputNome").value = ''
+                  document.querySelector("#inputTelefone4").value = ''
+                  document.querySelector("#inputEmail").value = ''
                   x.cadastrarAluno(aluno)
-                  console.log(classesInitTurma)
-                  armazenarValores(classesInitTurma)
-                  return "ok"
+                  armazenarValores(turmasInst)
               }
           }
-          console.log(turma)
       })
       function deletando(deletar) {
-          console.log(deletar)
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
-          let tag = document.getElementById(deletar);
-          for (let x of classesInitTurma) {
-              if (x.codigoTurma == idTurma) {
-                  let matricula = tag.id
-                  console.log(deletar)
-                  for (let i = 0; i < x.alunos.length; i++) {
-                      if (x.alunos[i].matricula == deletar) {
-                          alert("a")
-                          x.removerAluno(matricula)
-                          armazenarValores(classesInitTurma)
-                      }
-                  }
-              }
+          let tag = document.getElementById(deletar)
+          let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
+          let turmasInst = instanciaTurmas(turma2)
+          let alunosInst = instanciaAlunos(turma2)
+          for (let x of turmasInst) {
+            if (x.codigoTurma == idTurma) {
+              for (let y of x.alunos){
+                    let matricula = tag.id
+                    for (let i = 0; i < x.alunos.length; i++) {
+                        if (y.matricula == deletar) {
+                            x.removerAluno(matricula)
+                            armazenarValores(turmasInst)
+                        }
+                    }}
+                }
           }
       }
   </script>

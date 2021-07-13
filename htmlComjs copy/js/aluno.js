@@ -1,8 +1,9 @@
 export class Aluno {
+    #matricula
     #nota
     #media
     constructor(matricula, nome, telefone, email, notas=[], media=0) {
-        this.matricula = matricula;
+        this.#matricula = matricula;
         this.#nota = notas;
         this.#media = media;
         this.nome = nome;
@@ -11,15 +12,9 @@ export class Aluno {
 
     }
     editarInformacoes(nome, telefone, email) {
-        if (!nome == this.nome) {
         this.nome = nome;
-        }
-        if (!telefone == this.telefone) {
         this.telefone = telefone;
-        }
-        if (!email == this.email) {
         this.email = email;
-        }
     }
     calculaMedia() {
         let soma = 0;
@@ -38,4 +33,39 @@ export class Aluno {
         alert(this.#nota)
         return(this.#nota)
     }
+
+    get nota(){
+        return this.#nota
+    }
+
+    get media(){
+        return this.#media
+    }
+
+    set nota(nota){
+        this.#nota = nota
+    }
+
+    set media(media){
+        this.#media = media
+    }
+
+    get matricula(){
+        return this.#matricula
+    }
+
+    set matricula(matricula){
+        this.#matricula = matricula
+    }
+    toJSON(){
+        return {
+          matricula: this.#matricula,
+          nome: this.nome,
+          telefone : this.telefone,
+          email : this.email,
+          nota : this.#nota,
+          media : this.#media
+        }
+      }
+    
 }

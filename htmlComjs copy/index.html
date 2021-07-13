@@ -142,14 +142,12 @@
     <script type="module">
       import { Aluno } from './js/aluno.js'
       import { Turma } from './js/turma.js'
-      import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, criarInst, classesInitTurma, classesInitAlunos } from './js/backend.js'
+      import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, instanciaAlunos, instanciaTurmas} from './js/backend.js'
 
       let timer = setTimeout(verificar, 1000)
-      let timer2 = setTimeout(criarInst, 1000)
-
       let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
       let lista_conthtml = document.querySelector(".row")
-    for (let turma of lista_geral) {
+      for (let turma of lista_geral) {
         lista_conthtml.innerHTML +=  `<div class="card" style="width: 18rem;">`+
         `<div class="card-header"></div>`+
               `<div class="card-body">`+
@@ -167,113 +165,9 @@
           let input2 = document.querySelector("#nomeTurma")
           console.log(input1.value)
           cadastrarTurma(input1.value, input2.value)
-          window.location.reload()
-
       })
   </script>
 
-  <script>
-      class Turma {
-        constructor(codigoTurma, nomeTurma) {
-            this.codigoTurma = codigoTurma
-            this.nomeTurma = nomeTurma
-            this.alunos = []
-        }
-        cadastrarAluno(aluno) {
-            for (let estudante of this.alunos) {
-                if (estudante.matricula == aluno.matricula) {
-                    return ("Não é possivel cadastrar o aluno!")
-                }
-            }
-            this.alunos.push(aluno)
-            return ("Deu certo!")
-        }
-        removerAluno(matriculaAluno) {
-            for (let x = 0; x < (this.alunos.length); x += 1) {
-                if (matriculaAluno == this.alunos[x].matricula) {
-                    this.alunos.splice(x, 1)
-                    armazenarValores()
-                    return ("Deu certo!")
-                }
-            }
-            return ("Não foi possivel remover o aluno!")
-        }
-    }
 
-      function instanciaTurmas(turmas) {
-          let turmasObjeto = []
-          for (let turma of turmas) {
-              let turmaObjeto = new Turma(turma.codigoTurma, turma.nomeTurma, turma.alunos)        
-              turmasObjeto.push(turmaObjeto)
-          }
-          return turmasObjeto
-      }
-
-
-      let turmas = JSON.parse(localStorage.getItem("listaTurmas"))
-
-      let turmasObjeto = instanciaTurmas(turmas)
-      
-      console.log(turmasObjeto)
-
-
-      class Aluno {
-        #matricula
-        #nota
-        #media
-      constructor(matricula, nome, telefone, email, notas=[], media=0) {
-          this.#matricula = matricula;
-          this.#nota = notas;
-          this.#media = media;
-          this.nome = nome;
-          this.telefone = telefone;
-          this.email = email;
-
-      }
-    editarInformacoes(nome, telefone, email) {
-        if (!nome == this.nome) {
-        this.nome = nome;
-        }
-        if (!telefone == this.telefone) {
-        this.telefone = telefone;
-        }
-        if (!email == this.email) {
-        this.email = email;
-        }
-    }
-    calculaMedia() {
-        let soma = 0;
-        for (let x = 0; x < this.#nota.length; x++) {
-            soma += this.#nota[x];
-            }
-        let media = soma / this.#nota.length;
-        this.#media = media
-        return(this.#media)
-    }
-
-    cadastraNotas(n1, n2, n3) {
-        this.#nota[0] = parseInt(n1)
-        this.#nota[1] = parseInt(n2)
-        this.#nota[2] = parseInt(n3)
-        alert(this.#nota)
-        return(this.#nota)
-    }
-    get matricula(){
-      return this.#matricula
-    }
-}
-
-      function instanciaAlunos(turmas) {        
-        for (let turma of turmas) {
-          for (let i = 0; i < turma.alunos.length; i++) {            
-            turma.alunos[i] = new Aluno(turma.alunos[i].matricula, turma.alunos[i].nome, turma.alunos[i].telefone, turma.alunos[i].email)
-          }
-        }
-      }
-
-      instanciaAlunos(turmas)
-
-      console.log(turmas[0].alunos[0].matricula)
-  </script>
   </body>
 </html>

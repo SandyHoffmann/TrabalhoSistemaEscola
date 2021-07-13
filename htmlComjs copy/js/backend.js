@@ -48,9 +48,9 @@ function instanciaTurmas(turmas) {
 function instanciaAlunos(turmas) {        
     for (let turma of turmas) {
       for (let i = 0; i < turma.alunos.length; i++) {            
-        turma.alunos[i] = new Aluno(turma.alunos[i].matricula, turma.alunos[i].nome, turma.alunos[i].telefone, turma.alunos[i].email)
+        turma.alunos[i] = new Aluno(turma.alunos[i].matricula, turma.alunos[i].nome, turma.alunos[i].telefone, turma.alunos[i].email,turma.alunos[i].nota,turma.alunos[i].media)
       }
     }
 }
 
-export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, instanciaAlunos, instanciaTurmas, classesInitTurma, classesInitAlunos }
+export { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, instanciaAlunos, instanciaTurmas }

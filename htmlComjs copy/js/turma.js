@@ -1,11 +1,11 @@
-import { armazenarValores, criarInst } from './backend.js'
+import { armazenarValores} from './backend.js'
 
 
 export class Turma {
-    constructor(codigoTurma, nomeTurma) {
+    constructor(codigoTurma, nomeTurma, alunos=[]) {
         this.codigoTurma = codigoTurma
         this.nomeTurma = nomeTurma
-        this.alunos = []
+        this.alunos = alunos
     }
     cadastrarAluno(aluno) {
         for (let estudante of this.alunos) {
