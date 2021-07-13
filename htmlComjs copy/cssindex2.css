@@ -24,6 +24,9 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.carousel-inner img{
+    max-width: 100%;
+}
 
 
 .card{
