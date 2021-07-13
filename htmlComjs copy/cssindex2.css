@@ -95,6 +95,12 @@ button:hover{
     background-color: #cb80fd;
 }
 
+#myCarousel{
+    width: 60%;
+    justify-content: center;
+    margin: auto;
+}
+
 @media (max-width: 900px) {
     #fileira{
         display: flex;
@@ -118,6 +124,10 @@ button:hover{
     #containerbd{
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
+    }
+    #myCarousel{
+        width: 100%;
+
     }
 
 }
