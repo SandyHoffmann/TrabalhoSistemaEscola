@@ -33,6 +33,10 @@ nav {
   color: black;
 }
 
+.textoInv{
+  text-align: center;
+  color: #eceeef;
+}
 .site-footer hr {
   border-top-color: rgb(223, 223, 223);
   opacity: 0.5;
@@ -185,10 +189,16 @@ body {
 footer {
   font-family: "Quicksand", sans-serif;
 }
+.nomeTurma{
+  color: white;
+}
 
+.codigoTurma{
+  color: white;
+}
 
 .carteira {
-  background-color: #f9dcc4;
+  background-color: #eeb3f3;
   border-radius: 50px;
   width: 70%;
   display: grid;
@@ -198,6 +208,7 @@ footer {
   padding: 50px;
   margin-top: 2%;
   margin-bottom: 2%;
+  border: 1px solid white;
   
 }
 .notas{
@@ -212,6 +223,8 @@ footer {
 @media (max-width: 800px) {
   .carteira{
     padding: 3%;
+    width: 100%;
+    border-radius: 0px;
   }
   .img{
     padding: 3%;
@@ -230,7 +243,9 @@ footer {
     display: flex;
     justify-self: center;
     flex-direction: column;
-
+  }
+  #containerbd{
+    width: 80%;
   }
 }
 

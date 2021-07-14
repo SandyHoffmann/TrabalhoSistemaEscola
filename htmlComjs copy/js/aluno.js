@@ -15,6 +15,7 @@ export class Aluno {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+        alert("Edições Editadas!")
     }
     calculaMedia() {
         let soma = 0;
@@ -22,7 +23,7 @@ export class Aluno {
             soma += this.#nota[x];
             }
         let media = soma / this.#nota.length;
-        this.#media = media
+        this.#media = media.toFixed(2)
         return(this.#media)
     }
 
@@ -30,8 +31,7 @@ export class Aluno {
         this.#nota[0] = parseInt(n1)
         this.#nota[1] = parseInt(n2)
         this.#nota[2] = parseInt(n3)
-        alert(this.#nota)
-        return(this.#nota)
+        return alert("Notas Editadas!")
     }
 
     get nota(){

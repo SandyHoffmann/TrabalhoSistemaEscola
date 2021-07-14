@@ -46,7 +46,7 @@
             class="nav navbar-nav"
           >
             <li class="active">
-              <a href="#">Quem somos nós?</a>
+              <a href="index.html">Home</a>
             </li>
           <ul class="nav navbar-nav navbar-right">
           </ul>
@@ -57,6 +57,7 @@
    <center> <h1 class="nomeTurma"></h1>
     <h2 class="codigoTurma"></h2></center>
     <div class="corpoPag">
+      <div class="textoInv"><p>Os alunos cadastrados irão aparecer abaixo, no seguinte formato de tabela:</p></div>
   <section class="container">
       <table class="tabela" id="tabela">
         <tr>
@@ -72,7 +73,7 @@
     </section>
   <br>
     </div>
-    <div class="maisAluno">
+    <div class="mais">
       <button type="button" class="btn btn" id="botaomaisAluno" data-toggle="modal" data-target=".bd-example-modal-lg-m">+</button>
     </div>
   </div>
@@ -184,7 +185,9 @@
                   pCodTurma.textContent = turmasIns[x].codigoTurma
                   console.log(turmasIns[x].codigoTurma)
                   let tabela = document.querySelector("table")
+                  let alunoP = document.querySelector(".textoInv")
                     for (let z=0;z<turmasIns[x].alunos.length;z++){
+                        alunoP.hidden = true
                         let fileira = document.createElement("tr")
                         tabela.append(fileira)
                           let a = document.createElement("a")

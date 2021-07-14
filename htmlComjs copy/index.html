@@ -46,7 +46,7 @@
             class="nav navbar-nav"
           >
             <li class="active">
-              <a href="#">Quem somos nós?</a>
+              <a href="index.html">Home</a>
             </li>
           <ul class="nav navbar-nav navbar-right">
           </ul>
@@ -69,19 +69,19 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
-              <img src="../img/photo-1624427537505-144981fc9215.png" alt="0">
+              <img src="img/photo-1624427537505-144981fc9215.png" alt="0">
               </div>
             <div class="item">
-              <img src="../img/photo-1555656220-46e30749d330.png" alt="1">
+              <img src="img/photo-1555656220-46e30749d330.png" alt="1">
             </div>
             <div class="item">
-              <img src="../img/bailarina.png" alt="2">
+              <img src="img/bailarina.png" alt="2">
             </div>
             <div class="item">
-              <img src="../img/news_interna_DUETO_O_CIRCO_MSTICO_Foto__Maringas_Maciel_Bailarinos__Luciana_Voloxki_e_Rodrigo_Leopoldo1190.jpg" alt="3">
+              <img src="img/news_interna_DUETO_O_CIRCO_MSTICO_Foto__Maringas_Maciel_Bailarinos__Luciana_Voloxki_e_Rodrigo_Leopoldo1190.jpg" alt="3">
             </div>
             <div class="item">
-              <img src="../img/alexandre-dinaut-62xQu1IGeUo-unsplash.jpg" alt="4">
+              <img src="img/alexandre-dinaut-62xQu1IGeUo-unsplash.jpg" alt="4">
             </div>        
           <!-- Left and right controls -->
           <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -187,10 +187,12 @@
       let timer = setTimeout(verificar, 1000)
       let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
       let lista_conthtml = document.querySelector(".row")
+      let conjunto_cores = ['#DCD6F7','#A6B1E1','#B4869F','#985F6F','#4E4C67']
       if (lista_geral){
         for (let turma of lista_geral) {
-          lista_conthtml.innerHTML +=  `<div class="card">`+
-          `<div class="cabecalho"></div>`+
+          let color = conjunto_cores[Math.floor(Math.random() * 5)]
+          lista_conthtml.innerHTML +=  `<div class="card" >`+
+          `<div class="cabecalho" style = "background-color:${color};border: 20px solid ${color};"></div>`+
           `<div class="card-header"></div>`+
                 `<div class="card-body">`+
                 `<h5 class="card-title">${turma.codigoTurma}</h5>`+
