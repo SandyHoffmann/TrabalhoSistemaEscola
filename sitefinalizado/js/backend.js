@@ -1,6 +1,15 @@
 import { Aluno } from './aluno.js'
 import { Turma } from './turma.js'
 
+// @ts-check
+
+/**
+ * Cadastra uma turma
+ * @param {string} codigo - Codigo da Turma
+ * @param {string} nome - O nome do aluno
+ * @returns {void}
+ */
+
 function cadastrarTurma(codigo, nome) {
     let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
     console.log(lista_geral)
@@ -18,24 +27,39 @@ function cadastrarTurma(codigo, nome) {
 
 }
 
+/**
+ * Armazena valores no storage
+ * @param {Array<Turma>} lista - lista de turmas
+ * @returns {void}
+ */
 function armazenarValores(lista) {
     localStorage.setItem("listaTurmas", JSON.stringify(lista))
     window.location.reload()
 }
-
+/**
+ * Armazena valores no storage
+ * @returns {void}
+ */
 function armazenarValorInicial() {
     let lista_geral = []
     localStorage.setItem("listaTurmas", JSON.stringify(lista_geral))
     window.location.reload()
 }
-
+/**
+ * Verifica se há a instância listaTurmas no storage
+ * @returns {void}
+ */
 function verificar() {
     if (!localStorage.getItem("listaTurmas")) {
         alert("Iniciando Backend")
         armazenarValorInicial()
     }
 }
-
+/**
+ * Instancia as turmas
+ * @param {Array<object>} lista - lista de turmas
+ * @returns {Array<Turma>}
+ */
 function instanciaTurmas(turmas) {
     let turmasObjeto = []
     for (let turma of turmas) {
@@ -45,7 +69,11 @@ function instanciaTurmas(turmas) {
     return turmasObjeto
 }
 
-
+/**
+ * Instancia os alunos
+ * @param {Array<object>} lista - lista de turmas
+ * @returns {void}
+ */
 function instanciaAlunos(turmas) {        
     for (let turma of turmas) {
       for (let i = 0; i < turma.alunos.length; i++) {            

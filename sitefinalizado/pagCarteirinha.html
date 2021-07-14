@@ -186,72 +186,81 @@
     </footer>
 
     <script type="module">
-          import { Turma } from './js/turma.js'
-          import { armazenarValores, instanciaAlunos, instanciaTurmas } from './js/backend.js'
-          let input2 = document.querySelector("#inputNome")
-          let input3 = document.querySelector("#inputEmail")
-          let input4 = document.querySelector("#inputTelefone")
-          let input5 = document.querySelector("#n1")
-          let input6 = document.querySelector("#n2")
-          let input7 = document.querySelector("#n3")
-    window.addEventListener("load", () => {
-        let query = new URLSearchParams(location.search)
-        let matricula = query.get("matricula")
-        let turma = JSON.parse(localStorage.getItem("listaTurmas"))
-        let lista_turmas = instanciaTurmas(turma)
-        let lista_alunos = instanciaAlunos(turma)
-        for (let x of lista_turmas){
-            for (let aluno of x.alunos){
-                if (aluno.matricula == matricula){
-                    console.log(aluno.matricula)
-                    document.querySelector(".matricula").textContent = aluno.matricula
-                    document.querySelector(".nome-estudante").textContent = aluno.nome
-                    document.querySelector(".email").textContent = aluno.email
-                    document.querySelector(".telefone").textContent = aluno.telefone
-
-                    input2.value = aluno.nome
-                    input3.value = aluno.email
-                    input4.value = aluno.telefone
-                    console.log(aluno)
-                    if (aluno.nota){
-                      document.querySelector(".n1").textContent = aluno.nota[0]
-                      document.querySelector(".n2").textContent = aluno.nota[1]
-                      document.querySelector(".n3").textContent = aluno.nota[2]
-                      document.querySelector(".media").textContent = aluno.media
-                    }
-                    // input5.value = aluno.nota[0]
-                    // input6.value = aluno.nota[1]
-                    // input7.value = aluno.nota[2]
-                }
-            }}
-        })
-    
-    let botao = document.querySelector("#botaoAluno")
-
-    botao.addEventListener("click", (event) => {
-        let query = new URLSearchParams(location.search)
-        let matricula = query.get("matricula")
-        let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
-        let lista_turmas = instanciaTurmas(turma2)
-        let lista_alunos = instanciaAlunos(turma2)
-          for (let x of lista_turmas) {
-              for (let i = 0; i < x.alunos.length; i++) {
-                  if (x.alunos[i].matricula == matricula) {
-                      x.alunos[i].editarInformacoes(input2.value, input3.value, input4.value)
-                      if (input7.value){
-                        x.alunos[i].cadastraNotas(input5.value,input6.value,input7.value)
-                        x.alunos[i].calculaMedia()
-                        }
-                        console.log(x.alunos[i])
-                        document.querySelector("#inputEmail").value = ''
-                        document.querySelector("#inputNome").value = ''
-                        document.querySelector("#inputTelefone").value = ''
+      //importações
+      import { Turma } from './js/turma.js'
+      import { armazenarValores, instanciaAlunos, instanciaTurmas } from './js/backend.js'
+      //pego valores dos inputs
+      let input2 = document.querySelector("#inputNome")
+      let input3 = document.querySelector("#inputEmail")
+      let input4 = document.querySelector("#inputTelefone")
+      let input5 = document.querySelector("#n1")
+      let input6 = document.querySelector("#n2")
+      let input7 = document.querySelector("#n3")
+      
+      //adiciono evento ao carregar a pagina
+      window.addEventListener("load", () => {
+          //esse evento faz com que os dados da pagina sejam de acordo com a url da matricula do aluno
+          let query = new URLSearchParams(location.search)
+          let matricula = query.get("matricula")
+          let turma = JSON.parse(localStorage.getItem("listaTurmas"))
+          let lista_turmas = instanciaTurmas(turma)
+          let lista_alunos = instanciaAlunos(turma)
+          //Percorrendo turmas instanciadas
+          for (let x of lista_turmas){
+              //Percorrendo alunos instanciados
+              for (let aluno of x.alunos){
+                  //Se achar aluno, bota-lo na carteirinha e colocar dados default no form
+                  if (aluno.matricula == matricula){
+                      console.log(aluno.matricula)
+                      document.querySelector(".matricula").textContent = aluno.matricula
+                      document.querySelector(".nome-estudante").textContent = aluno.nome
+                      document.querySelector(".email").textContent = aluno.email
+                      document.querySelector(".telefone").textContent = aluno.telefone
+                      input2.value = aluno.nome
+                      input3.value = aluno.email
+                      input4.value = aluno.telefone
+                      console.log(aluno)
+                      if (aluno.nota){
+                        document.querySelector(".n1").textContent = aluno.nota[0]
+                        document.querySelector(".n2").textContent = aluno.nota[1]
+                        document.querySelector(".n3").textContent = aluno.nota[2]
+                        document.querySelector(".media").textContent = aluno.media
+                      }
                   }
-              }
-              console.log(lista_turmas)
-              armazenarValores(lista_turmas)
-          }
-        })
+              }}
+          })
+      
+      //botao de mudar informações de aluno
+      let botao = document.querySelector("#botaoAluno")
+      //Adicionando evento ao botão
+      botao.addEventListener("click", (event) => {
+          //Pegando informações de query e instanciando turmas e alunos
+          let query = new URLSearchParams(location.search)
+          let matricula = query.get("matricula")
+          let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
+          let lista_turmas = instanciaTurmas(turma2)
+          let lista_alunos = instanciaAlunos(turma2)
+            //Percorrendo turmas
+            for (let x of lista_turmas) {
+                for (let i = 0; i < x.alunos.length; i++) {
+                    //Achando aluno para editar
+                    if (x.alunos[i].matricula == matricula) {
+                      //Editando info
+                        x.alunos[i].editarInformacoes(input2.value, input3.value, input4.value)
+                        //Se tiver nota, editando nota
+                        if (input7.value){
+                          x.alunos[i].cadastraNotas(input5.value,input6.value,input7.value)
+                          x.alunos[i].calculaMedia()
+                          }
+                          //Limpando campos afim de evitar erros.
+                          document.querySelector("#inputEmail").value = ''
+                          document.querySelector("#inputNome").value = ''
+                          document.querySelector("#inputTelefone").value = ''
+                    }
+                }
+                armazenarValores(lista_turmas)
+            }
+          })
 
     </script>
   </body>

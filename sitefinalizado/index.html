@@ -181,16 +181,27 @@
 
 
       <script type="module">
+      
+      //importações
       import { Aluno } from './js/aluno.js'
       import { Turma } from './js/turma.js'
       import { cadastrarTurma, armazenarValores, armazenarValorInicial, verificar, instanciaAlunos, instanciaTurmas} from './js/backend.js'
+
+      //timer que verifica se há uma lista no storage
       let timer = setTimeout(verificar, 1000)
+      //lista que contem os dados do storage sendo convertidas para um objeto novamente
       let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
+      //pegando coluna onde terão os cards de turma
       let lista_conthtml = document.querySelector(".row")
+      //conjunto de cores que servirão para o cabeçalho dos cards das turmas
       let conjunto_cores = ['#e5588b','#818a91','#cb80fd','#291D36','#4E4C67']
+      //vejo se há turmas
       if (lista_geral){
+        //se tiver, percorro as turmas para mostra-las no html
         for (let turma of lista_geral) {
+          //sorteio um numero para as cores do cabeçalho
           let color = conjunto_cores[Math.floor(Math.random() * 5)]
+          //implemento os cards, contendo as cores sortidas, o nome das turmas e os codigos, juntamente com um botão que redireciona para a pagina da turma especifica
           lista_conthtml.innerHTML +=  `<div class="card" >`+
           `<div class="cabecalho" style = "background-color:${color};border: 20px solid ${color};"></div>`+
           `<div class="card-header"></div>`+
@@ -203,14 +214,19 @@
         }
       }
 
+      //pegando botão de adicionar turma
       let botao = document.querySelector("#botaoCadastro")
 
+      //adicionando evento ao botão de adicionar turma
       botao.addEventListener("click", (event) => {
+          //pego valores do input
           let input1 = document.querySelector("#codigoTurma")
           let input2 = document.querySelector("#nomeTurma")
           let cont1 = input1.value
           let cont2 = input2.value
+          //vejo se valores tem tamanho minimo necessário
           if (cont1.length>1 && cont2.length>1){
+            //Os cadastro com a função cadastrar turma
             cadastrarTurma(input1.value, input2.value)
           }
       })

@@ -167,29 +167,48 @@
     </footer>
 
     <script type="module">
+      //importações
       import { Aluno } from './js/aluno.js'
       import { Turma } from './js/turma.js'
       import { armazenarValores, instanciaAlunos, instanciaTurmas } from './js/backend.js'
+      //espero um tempo para iniciar a função iniciar
       let timer2 = setTimeout(iniciar, 2)
+      // @ts-check
+
+      /**
+       * Função coloca os dados na página em forma de tabela.
+       */
+
       function iniciar() {
+          //Pegando valores de URL
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
+          //Pegando dados do storage
           let turma = JSON.parse(localStorage.getItem("listaTurmas"))
+          //Pegando os seletores
           let pNomeTurma = document.querySelector(".nomeTurma")
           let pCodTurma = document.querySelector(".codigoTurma")
+          //Chamando funções para instanciar objetos de turmas e alunos
           let turmasIns = instanciaTurmas(turma)
           let alunosIns = instanciaAlunos(turma)
+          //Percorrendo lista de objetos de aluno
           for (let x = 0; x<turmasIns.length; x++) {
               if (turmasIns[x].codigoTurma == idTurma) {
+                  //Colocando informações no cabeçalho
                   pNomeTurma.textContent = turmasIns[x].nomeTurma
                   pCodTurma.textContent = turmasIns[x].codigoTurma
-                  console.log(turmasIns[x].codigoTurma)
+                  //Selecionando tabela e texto
                   let tabela = document.querySelector("table")
                   let alunoP = document.querySelector(".textoInv")
+                    //Percorrendo alunos da turma
                     for (let z=0;z<turmasIns[x].alunos.length;z++){
+                        //Se tiver alunos não preciso de aviso que não há alunos
                         alunoP.hidden = true
+                        //Crio uma fileira na tabela
                         let fileira = document.createElement("tr")
+                        //Adiciono-a na tabela
                         tabela.append(fileira)
+                        //Crio a tabela checando se o aluno possui notas ou não e adicionando a funcionalidade de deletar a cada botão de deletar, a class esconder é para ficar melhor no mobile.
                           let a = document.createElement("a")
                           fileira.innerHTML += `<td><a href="pagCarteirinha.html?matricula=${turmasIns[x].alunos[z].matricula}">${turmasIns[x].alunos[z].matricula}</a></td>`
                           fileira.innerHTML += `<td>${turmasIns[x].alunos[z].nome}</td>`
@@ -212,21 +231,27 @@
               }
           }
       }
+      //Botao de adicionar aluno
       let botao = document.querySelector("#botaoAluno")
+      //Adicionando evento de click
       botao.addEventListener("click", (event) => {
+          //Pegando informações de query e instanciando turmas e alunos
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
           let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
           let turmasInst = instanciaTurmas(turma2)
           let alunosInst = instanciaAlunos(turma2)
+          //Pegando valores de input
           let cont1 = document.querySelector("#inputMatricula4").value
           let cont2 = document.querySelector("#inputNome").value
           let cont3 = document.querySelector("#inputTelefone4").value
           let cont4 = document.querySelector("#inputEmail").value
-
+          //Se há o minimo necessário cadastrando alunos
           if (cont1.length>1 && cont2.length>1){
+            //Percorrendo turma
             for (let x of turmasInst) {
                 if (x.codigoTurma == idTurma) {
+                    //Adicionando aluno na turma
                     let input1 = document.querySelector("#inputMatricula4").value
                     let input2 = document.querySelector("#inputNome").value
                     let input3 = document.querySelector("#inputTelefone4").value
@@ -242,16 +267,27 @@
             }
           }
       })
+
+       /**
+       * Função que deleta os alunos, coloquei separado por quisitos de organização
+       * @param {string} deletar - matricula do aluno.
+       */
+
       function deletando(deletar) {
+          //Pegando informações de query e instanciando turmas e alunos
           let query = new URLSearchParams(location.search)
           let idTurma = query.get("codigoTurma")
           let tag = document.getElementById(deletar)
           let turma2 = JSON.parse(localStorage.getItem("listaTurmas"))
           let turmasInst = instanciaTurmas(turma2)
           let alunosInst = instanciaAlunos(turma2)
+          //Percorrendo turmas
           for (let x of turmasInst) {
+            //Achando a turma
             if (x.codigoTurma == idTurma) {
+              //percorrendo alunos DAQUELA turma
               for (let y of x.alunos){
+                    //Se achar aluno, o remover
                     let matricula = tag.id
                     for (let i = 0; i < x.alunos.length; i++) {
                         if (y.matricula == deletar) {
