@@ -187,7 +187,7 @@
       let timer = setTimeout(verificar, 1000)
       let lista_geral = JSON.parse(localStorage.getItem("listaTurmas"))
       let lista_conthtml = document.querySelector(".row")
-      let conjunto_cores = ['#DCD6F7','#A6B1E1','#B4869F','#985F6F','#4E4C67']
+      let conjunto_cores = ['#e5588b','#818a91','#cb80fd','#291D36','#4E4C67']
       if (lista_geral){
         for (let turma of lista_geral) {
           let color = conjunto_cores[Math.floor(Math.random() * 5)]

@@ -99,6 +99,11 @@ button:hover{
     width: 60%;
     justify-content: center;
     margin: auto;
+    -webkit-box-shadow:10px 10px 10px 10px rgba(229,88,139,1);
+    -moz-box-shadow: 10px 10px 10px 10px rgba(229,88,139,1);
+    box-shadow: 10px 10px 10px 10px rgba(229,88,139,1);
+    -webkit-box-shadow: -10px 0px 13px -7px rgba(229,88,139,1), 10px 0px 13px -7px rgba(229,88,139,1), 5px 5px 15px 5px rgba(229,88,139,1); 
+    box-shadow: -10px 0px 13px -7px rgba(229,88,139,1), 10px 0px 13px -7px rgba(229,88,139,1), 5px 5px 15px 5px rgba(229,88,139,1);
 }
 
 @media (max-width: 900px) {

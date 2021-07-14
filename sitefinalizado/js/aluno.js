@@ -15,7 +15,7 @@ export class Aluno {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        alert("Edições Editadas!")
+        alert("Edições feitas!")
     }
     calculaMedia() {
         let soma = 0;
