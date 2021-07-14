@@ -28,9 +28,9 @@ export class Aluno {
     }
 
     cadastraNotas(n1, n2, n3) {
-        this.#nota[0] = parseInt(n1)
-        this.#nota[1] = parseInt(n2)
-        this.#nota[2] = parseInt(n3)
+        this.#nota[0] = parseFloat(n1)
+        this.#nota[1] = parseFloat(n2)
+        this.#nota[2] = parseFloat(n3)
         return alert("Notas Editadas!")
     }
 
